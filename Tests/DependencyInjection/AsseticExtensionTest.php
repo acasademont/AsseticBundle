@@ -46,6 +46,10 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Assetic is not available.');
         }
 
+        if (!class_exists('Twig_Environment')) {
+            $this->markTestSkipped('Twig is not available.');
+        }
+
         $this->kernel = $this->getMock('Symfony\\Component\\HttpKernel\\KernelInterface');
 
         $this->container = new ContainerBuilder();
@@ -106,21 +110,30 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
             array('compass'),
             array('cssembed', array('jar' => '/path/to/cssembed.jar')),
             array('cssimport'),
+            array('cssmin'),
             array('cssrewrite'),
-            array('jsmin'),
-            array('jsminplus'),
+            array('dart'),
+            array('gss'),
+            array('handlebars'),
             array('jpegoptim'),
             array('jpegtran'),
+            array('jsmin'),
+            array('jsminplus'),
             array('less'),
             array('lessphp'),
-            array('scssphp', array('compass' => true)),
             array('optipng'),
             array('packager'),
+            array('phpcssembed'),
             array('pngout'),
             array('sass'),
             array('scss'),
+            array('scssphp', array('compass' => true)),
             array('sprockets', array('include_dirs' => array('foo'))),
             array('stylus'),
+            array('typescript'),
+            array('uglifycss'),
+            array('uglifyjs'),
+            array('uglifyjs2'),
             array('yui_css', array('jar' => '/path/to/yuicompressor.jar')),
             array('yui_js', array('jar' => '/path/to/yuicompressor.jar')),
         );
